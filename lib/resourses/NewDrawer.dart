@@ -50,7 +50,7 @@ class _NewDrawerState extends State<NewDrawer> {
             ),
 
             SizedBox(
-              height: 55,
+              height: 109,
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.map),

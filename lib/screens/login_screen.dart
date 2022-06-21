@@ -117,13 +117,15 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 35, top: 130),
+                  // alignment: Alignment.center,
+                  padding: EdgeInsets.only(left: 20, top: 130,right: 30),
                   child: Text(
-                    'Welcome\nBack',
+                    'Welcome\n    Back',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 33,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
                 Container(
