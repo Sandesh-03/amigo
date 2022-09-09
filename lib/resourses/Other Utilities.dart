@@ -79,7 +79,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/other_1.png'),
             ),
-            title: const Text('Wajir Staionery',style: TextStyle(
+            title: const Text('Mirji Staionery',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),
@@ -97,7 +97,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/other_1.png'),
             ),
-            title: const Text('Achal spa',style: TextStyle(
+            title: const Text('Hair spa',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),
@@ -114,7 +114,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/other_1.png'),
             ),
-            title: const Text('Angha Haircuts',style: TextStyle(
+            title: const Text('Medical Store',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),

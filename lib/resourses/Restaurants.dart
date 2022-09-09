@@ -115,7 +115,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/hotel.png'),
             ),
-            title: const Text('Ladda chi kulfi',style: TextStyle(
+            title: const Text('O2',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),

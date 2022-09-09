@@ -82,7 +82,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/mess.png'),
             ),
-            title: const Text('Bhosale',style: TextStyle(
+            title: const Text('Sachin Bhojnalay',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),
@@ -100,7 +100,7 @@ class BodyTiles extends StatelessWidget {
             leading:Container(
               child: Image.asset('images/mess.png'),
             ),
-            title: const Text('Sakshi Bari',style: TextStyle(
+            title: const Text('XYZ',style: TextStyle(
                 fontSize: 20,
                 color: Colors.black),
             ),
