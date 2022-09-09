@@ -1,5 +1,6 @@
 import 'package:amigo/screens/home_screen.dart';
 import 'package:amigo/screens/registration_screen.dart';
+import 'package:amigo/screens/resetPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -177,12 +178,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                     //         builder: (context) =>
                                     //             RegistrationScreen()));
                                   },
-                                  child: Text(
-                                    "Forget Password",
-                                    style: TextStyle(
-                                        color: Colors.blueAccent,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return ResetPassword();
+                                      } ));
+                                    },
+                                    child: const Text(
+                                      "Forget Password",
+                                      style: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
                                   ),
                                 )
                               ])

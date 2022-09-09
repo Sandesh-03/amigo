@@ -4,15 +4,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:mapbox_search/mapbox_search.dart';
-
-
-import 'package:latlong2/spline.dart';
-import 'package:flutter_mapbox_autocomplete/flutter_mapbox_autocomplete.dart';
-
 import '../model/user_model.dart';
-import 'login_screen.dart';
-final MAPBOX_KEY = 'https://api.mapbox.com/styles/v1/sandy03/cl4mvp2wj004u14mtbvqbcqcj/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2FuZHkwMyIsImEiOiJjbDRtaWNiMjYwenIzM3NwYm45aTNrbm40In0.jczzMpMQ6D4bRvHcy4E8gg';
+
+const MAPBOX_KEY = 'https://api.mapbox.com/styles/v1/sandy03/cl4mvp2wj004u14mtbvqbcqcj/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2FuZHkwMyIsImEiOiJjbDRtaWNiMjYwenIzM3NwYm45aTNrbm40In0.jczzMpMQ6D4bRvHcy4E8gg';
 String apiKey = MAPBOX_KEY;
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -45,15 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
 
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.deepOrange,
         ),
         child: Scaffold(
-          drawer: NewDrawer(),
+          drawer: const NewDrawer(),
           appBar:AppBar(
             backgroundColor: Colors.tealAccent,
 
-            title: Text('Home',style: TextStyle(color: Colors.black),),
+            title: const Text('Home',style: TextStyle(color: Colors.black),),
             centerTitle: true,
 
           ) ,
