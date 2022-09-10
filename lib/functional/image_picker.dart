@@ -1,46 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import 'dart:convert';
 import 'dart:io';
 
-class ImagePicker extends StatefulWidget {
-  const ImagePicker({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class ImagePickerScreen extends StatefulWidget {
+  const ImagePickerScreen({Key? key}) : super(key: key);
 
   @override
-
-  State<ImagePicker> createState() => _ImagePickerState();
-
-
-
+  State<ImagePickerScreen> createState() => _ImagePickerScreenState();
 }
 
-class _ImagePickerState extends State<ImagePicker> {
-  var pickedImage;
-  var imagePicker;
-  @override
-  void initState() {
-    super.initState();
-    //Get the ImagePicker instance
-    imagePicker = ImagePicker();
+class _ImagePickerScreenState extends State<ImagePickerScreen> {
+  File? selectedImage;
+  String base64Image = "";
+
+  Future<void> chooseImage(type) async {
+    // ignore: prefer_typing_uninitialized_variables
+    var image;
+    if (type == "camera") {
+      image = await ImagePicker()
+          .pickImage(source: ImageSource.camera, imageQuality: 10);
+    } else {
+      image = await ImagePicker()
+          .pickImage(source: ImageSource.gallery, imageQuality: 25);
+    }
+    if (image != null) {
+      setState(() {
+        selectedImage = File(image.path);
+        base64Image = base64Encode(selectedImage!.readAsBytesSync());
+        // won't have any error now
+      });
+    }
   }
-
-
-  // pickImage(ImageSource imageType) async {
-  //   final ImagePicker _picker = ImagePicker();
-  //   try {
-  //     final photo = await _picker.pickImage(source: imageType);
-  //     if (photo == null) return;
-  //     final tempImage = File(photo.path);
-  //     setState(() {
-  //       this.pickedImage = tempImage;
-  //     });
-  //
-  //     Get.back();
-  //   } catch (error) {
-  //     print(error);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -50,9 +42,9 @@ class _ImagePickerState extends State<ImagePicker> {
           child: Container(
             width: 100,
             height: 100,
-            child: pickedImage != null
+            child: selectedImage != null
                 ? Image.file(
-              pickedImage!,
+              selectedImage!,
               fit: BoxFit.cover,
             )
                 : Image.asset('images/default_image.png'),
@@ -104,35 +96,16 @@ class _ImagePickerState extends State<ImagePicker> {
             children: [
               ElevatedButton(
                   onPressed: () async {
-                    XFile? image =
-                    await imagePicker.pickImage(source: ImageSource.camera);
-                    setState(() {
-                      if (image != null) {
-                        pickedImage = File(image.path);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("No image Selected")));
-                      }
-                    });
-                  },
-                  child: Text("Capture photo")),
-              SizedBox(
-                width: 50,
+                  chooseImage("camera");
+                  Navigator.of(context).pop();
+                  }, child: Text("Open Camera"),
+
               ),
+              SizedBox(width: 30,),
               ElevatedButton(
                   onPressed: () async {
-                    //ImagePicker.pickImage() method returns XFile instance
-                    //that we can use to get the path of the image.
-                    XFile? image = await imagePicker.pickImage(
-                        source: ImageSource.gallery);
-                    setState(() {
-                      if (image != null) {
-                        pickedImage = File(image.path);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("No image Selected")));
-                      }
-                    });
+                    chooseImage("gallery");
+                    Navigator.of(context).pop();
                   },
                   child: Text("Open Gallery"))
                      ],

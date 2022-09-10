@@ -14,8 +14,8 @@ class _AddPropertyState extends State<AddProperty> {
   Map<String, dynamic> productData = {
     "p_name": "",
     "p_price": "",
-    "p_upload_date": DateTime.now().millisecondsSinceEpoch,
-    "phone_number": ""
+    "phone_number": "",
+    "address": ""
   };
 
   addProduct() {
@@ -88,11 +88,28 @@ class _AddPropertyState extends State<AddProperty> {
                     productData['phone_number'] = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                ImagePicker(),
-                SizedBox(
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(labelText: 'Address'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Address Required';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    productData['address'] = value!;
+                  },
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+
+                const ImagePickerScreen(),
+                const SizedBox(
                   height: 30,
                 ),
 
@@ -106,7 +123,7 @@ class _AddPropertyState extends State<AddProperty> {
                         minWidth: MediaQuery.of(context).size.width,
                         onPressed: (){
                           setState(() {
-
+                                Navigator.of(context).pop();
                           });
                         },
                         child: const Text(
